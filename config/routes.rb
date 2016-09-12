@@ -1,5 +1,5 @@
 Imworking::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   root "static_pages#index"
   resources :workplaces
   # The priority is based upon order of creation: first created -> highest priority.
