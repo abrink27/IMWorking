@@ -1,0 +1,12 @@
+
+<div class="holder-box col-xs-8 col-xs-offset-2">
+<h1> Create New Chatroom </h1>
+
+<%= simple_form_for @workplace do |f| %>
+	<%= f.input :title, label: "Chatroom Title" %>
+	    <br />
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+
+<% end %>
+
+</div>

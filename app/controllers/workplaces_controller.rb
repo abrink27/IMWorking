@@ -5,18 +5,22 @@ class WorkplacesController < ApplicationController
 		@workplace = Workplace.all
 	end
 
+	def show
+		@workplace = Workplace.find(params[:id])
+	end
 
 	def new
-		@worplace = Workplace.new
+		@workplace = Workplace.new
 	end
 
 	def create
-		current_user.workplaces.create(user_params)
+		Workplace.create(workplace_params)
+		redirect_to root_path
 	end
 
 	private
 
 	def workplace_params
-		params.require(:workplace).permit(:title, :zipcode)
+		params.require(:workplace).permit(:title)
 	end
 end

@@ -1,0 +1,7 @@
+<h1> Open Chatrooms </h1>
+
+<% @workplace.each do |workplace| %>
+	<div class="holder-box col-xs-8 col-xs-offset-2">
+		<h1> <%= link_to workplace.title, workplace_path(workplace) %></h1>
+	</div>
+<% end %>
