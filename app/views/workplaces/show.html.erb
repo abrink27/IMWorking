@@ -1,0 +1,40 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+
+
+
+<div class="draggable">
+    <input id="text" type="text" size="100"/>
+</div>
+
+
+
+<script>
+$(".draggable").draggable({
+    start: function (event, ui) {
+        $(this).data('preventBehaviour', true);
+    }
+
+});
+$(".draggable").find(":input").on('mousedown', function (e) {
+    var mdown = new MouseEvent("mousedown", {
+        screenX: e.screenX,
+        screenY: e.screenY,
+        clientX: e.clientX,
+        clientY: e.clientY,
+        view: window
+    });
+    $(this).closest('.draggable')[0].dispatchEvent(mdown);
+}).on('click', function (e) {
+    var $draggable = $(this).closest('.draggable');
+    if ($draggable.data("preventBehaviour")) {
+        e.preventDefault();
+        $draggable.data("preventBehaviour", false)
+    }
+});
+$(function(){
+	$('.draggable').resizable();
+})
+</script>
+
+
